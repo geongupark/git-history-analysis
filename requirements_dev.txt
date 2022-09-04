@@ -8,7 +8,7 @@ Sphinx==1.8.5
 twine==1.14.0
 
 pycodestyle==2.5.0
-pylint==2.15.0
+pylint
 pytest==6.2.4
 pytest-cov==3.0.0
 pytest-func-cov==0.2.3
