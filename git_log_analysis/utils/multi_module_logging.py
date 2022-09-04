@@ -10,7 +10,7 @@ class MultiModuleLogger:
 
     @classmethod
     def set_logging_mode(cls, mode: int, target_logger_name: str) -> None:
-        if type(logging.INFO) != int:
+        if not isinstance(mode, int):
             print("[Warning] The type of mode is not 'int'")
         elif target_logger_name not in cls.logger_names:
             print(
