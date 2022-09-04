@@ -31,5 +31,4 @@ jobs:
         if [ -f requirements_dev.txt ]; then pip install -r requirements_dev.txt; fi
     - name: Test with pytest
       run: |
-        pytest --cov=git_log_analysis tests/
-        pytest --func_cov=git_log_analysis --func_cov_report=term-missing tests/
+        pytest --cov=git_log_analysis --func_cov=git_log_analysis --func_cov_report=term-missing tests/
