@@ -10,6 +10,12 @@ class MultiModuleLogger:
 
     @classmethod
     def set_logging_mode(cls, mode: int, target_logger_name: str) -> None:
+        """Setting(change) logging mode for specific exist logger
+
+        Args:
+            mode (int): logging mode    ex) logging.DEBUG, logging.INFO, logging.WARNING...
+            target_logger_name (str): target logger name
+        """
         if not isinstance(mode, int):
             print("[Warning] The type of mode is not 'int'")
         elif target_logger_name not in cls.logger_names:
@@ -23,6 +29,14 @@ class MultiModuleLogger:
 
     @classmethod
     def create_logger(cls, logger_name: str):
+        """Creating logger (if it exists, not create)
+
+        Args:
+            logger_name (str): logger name
+
+        Returns:
+            (Logger): logger object
+        """
         # Create logger
         target_logger = logging.getLogger(logger_name)
         cls.logger_names.add(logger_name)
