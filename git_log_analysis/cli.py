@@ -1,8 +1,10 @@
 """Console script for git_log_analysis."""
 import sys
 
-from .git_log_analysis import get_git_log_result
-from .utils.argument_parser import ArgumentParser
+from git_log_analysis.plot_histogram import plot_histogram
+from git_log_analysis.utils.file_system import save_dict_to_json
+from git_log_analysis.git_log_analyzer import get_git_log_result
+from git_log_analysis.utils.argument_parser import ArgumentParser
 
 
 def main():
@@ -14,7 +16,7 @@ def main():
     output_path = args.output
     after = args.after
     before = args.before
-    allowed_extensions = args.alloedext
+    allowed_extensions = args.allowedext
 
     # Analyze git log
     commit_counts_by_files = get_git_log_result(
@@ -22,11 +24,11 @@ def main():
 
     # Plot histogram
     if histogram:
-        pass
+        plot_histogram(commit_counts_by_files)
 
     # Save output file
     if output_path:
-        pass
+        save_dict_to_json(output_path, commit_counts_by_files)
 
     return 0
 

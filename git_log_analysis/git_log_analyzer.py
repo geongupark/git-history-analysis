@@ -1,13 +1,21 @@
 """Main module."""
 import subprocess
 
-from .utils.multi_module_logging import MultiModuleLogger
-from .utils.file_system import traversing_dir_for_file
+from git_log_analysis.utils.multi_module_logging import MultiModuleLogger
+from git_log_analysis.utils.file_system import traversing_dir_for_file
 
 LOGGER = MultiModuleLogger.create_logger("gla")
 
 
 def get_count_by_files(git_log_results: list):
+    """Get count by files from git log results
+
+    Args:
+        git_log_results (list): Data from git log command
+
+    Returns:
+        (dict): counts by files from git log results
+    """
     count_by_files = {}
     git_log_results.reverse()
 
@@ -27,15 +35,29 @@ def get_count_by_files(git_log_results: list):
 
 
 def get_git_log_result(root_path: str, after: str = None, before: str = None, allowed_extensions: list = None):
+    """Main method for git log analyzer
+
+    Args:
+        root_path (str): Root path for repository(project)
+        after (str, optional): To get data after "20xx-xx-xx". Defaults to None.    ex) 2022-07-10
+        before (str, optional): To get data before "20xx-xx-xx". Defaults to None.    ex) 2022-09-10
+        allowed_extensions (list, optional): To allow specific extensions. Defaults to None.    ex) py java c
+
+    Returns:
+        (dict): Commit counts by files
+    """
     try:
         after_option = f"--after={after}" if after else ""
         before_option = f"--after={before}" if before else ""
+
         command = f'git log --name-status {after_option} {before_option} --pretty=format: | grep "."'
         process = subprocess.run([command], text=True, shell=True, check=False,
                                  cwd=root_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         result = process.stdout.splitlines()
         commit_counts_by_files = get_count_by_files(result)
+
         real_files = traversing_dir_for_file(root_path, allowed_extensions)
+        real_files = '\t'.join(real_files.copy())
 
         for file_name in commit_counts_by_files.copy():
             if file_name not in real_files:

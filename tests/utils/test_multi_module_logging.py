@@ -15,13 +15,12 @@ class TestMultiModuleLogger:
     def test_should_have_logger_name_log_when_create_logger(self):
         # given
         test_logger_name = "TestLogger"
-        expected_result = set([test_logger_name])
 
         # when
-        test_logger = MultiModuleLogger.create_logger(test_logger_name)
+        MultiModuleLogger.create_logger(test_logger_name)
 
         # then
-        assert expected_result == MultiModuleLogger.logger_names
+        assert test_logger_name in MultiModuleLogger.logger_names
 
     def test_should_debug_logging_mode_log_when_create_logger(self):
         # given

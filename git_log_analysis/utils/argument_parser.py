@@ -1,3 +1,4 @@
+"""For command options"""
 import argparse
 
 
@@ -6,10 +7,11 @@ class ArgumentParser:
         self.parser = argparse.ArgumentParser()
 
     def get_args(self):
+        """Getting arguments for command"""
         self.parser.add_argument(
             "-r", "--root", required=True, type=str, default="./", help="Project root directory    ex) -r ./")
         self.parser.add_argument(
-            "-p", "--histogram", required=True, default=True, type=bool, help="Print histogram    ex) -p False")
+            "-p", "--histogram", required=False, default=True, type=bool, help="Print histogram    ex) -p False")
         self.parser.add_argument(
             "-o", "--output", required=False, type=str, help="Output file(json) path    ex) -o ./gla_output.json")
         self.parser.add_argument(
