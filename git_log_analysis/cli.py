@@ -1,6 +1,5 @@
 """Console script for git_log_analysis."""
 import sys
-
 from git_log_analysis.plot_histogram import plot_histogram
 from git_log_analysis.utils.file_system import save_dict_to_json
 from git_log_analysis.git_log_analyzer import get_git_log_result
