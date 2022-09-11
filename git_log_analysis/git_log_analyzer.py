@@ -1,10 +1,6 @@
 """Main module."""
 import subprocess
-
-from git_log_analysis.utils.multi_module_logging import MultiModuleLogger
 from git_log_analysis.utils.file_system import traversing_dir_for_file
-
-LOGGER = MultiModuleLogger.create_logger("gla")
 
 
 def get_count_by_files(git_log_results: list):
@@ -27,7 +23,7 @@ def get_count_by_files(git_log_results: list):
                     count_by_files[split_result[1]] + 1) if split_result[1] in count_by_files else 1
             elif split_result[0] in ["D"]:
                 if split_result[1] in count_by_files:
-                    del(count_by_files[split_result[1]])
+                    del (count_by_files[split_result[1]])
             elif "R" in split_result[0]:
                 count_by_files[split_result[2]] = count_by_files.pop(
                     split_result[1]) + 1 if split_result[1] in count_by_files else 1

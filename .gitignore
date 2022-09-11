@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Result
+./gla_output.json
+gla_output.json
+
 # Distribution / packaging
 .Python
 env/
