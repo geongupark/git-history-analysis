@@ -1,13 +1,19 @@
 """Console script for git_log_analysis."""
 import sys
+import logging
 from git_log_analysis.plot_histogram import plot_histogram
 from git_log_analysis.utils.file_system import save_dict_to_json
 from git_log_analysis.git_log_analyzer import get_git_log_result
 from git_log_analysis.utils.argument_parser import ArgumentParser
+from git_log_analysis.utils.multi_module_logging import MultiModuleLogger
+
+LOGGER = MultiModuleLogger.create_logger("gitloganalysis")
+MultiModuleLogger.set_logging_mode(logging.INFO, "gitloganalysis")
 
 
 def main():
     """Console script for git_log_analysis."""
+    LOGGER.debug("=== Start gitloganalysis ===")
     args = ArgumentParser().get_args()
 
     root_path = args.root
@@ -29,6 +35,7 @@ def main():
     if output_path:
         save_dict_to_json(output_path, commit_counts_by_files)
 
+    LOGGER.debug("=== Finished gitloganalysis ===")
     return 0
 
 
