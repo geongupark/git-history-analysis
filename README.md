@@ -3,9 +3,9 @@
 ![pypi](https://img.shields.io/badge/pypi-v0.1.0-blue/)
 ![Python](https://img.shields.io/badge/python-3.6+-blue)
 ![License](https://camo.githubusercontent.com/890acbdcb87868b382af9a4b1fac507b9659d9bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667)
-[![Build](https://github.com/geongupark/git-log-analysis/workflows/unit-test/badge.svg)](https://github.com/geongupark/git-log-analysis/actions/workflows/unit_test.yml)
-[![Documentation](https://img.shields.io/badge/ref-Documentation-blue)](https://geongupark.github.io/git-log-analysis/)
-![lastcommit](https://img.shields.io/github/last-commit/geongupark/git-log-analysis)
+[![Build](https://github.com/geongupark/gitloganalysis/workflows/unit-test/badge.svg)](https://github.com/geongupark/gitloganalysis/actions/workflows/unit_test.yml)
+[![Documentation](https://img.shields.io/badge/ref-Documentation-blue)](https://geongupark.github.io/gitloganalysis/)
+![lastcommit](https://img.shields.io/github/last-commit/geongupark/gitloganalysis)
 * The `gitloganalysis` framework makes it easy to get and sort the git commit frequency by files.
 
 # Features
